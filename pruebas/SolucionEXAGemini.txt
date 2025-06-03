@@ -1,0 +1,73 @@
+Algoritmo CajeroAutomatico
+
+    // Declaración de variables
+    Definir saldo Como Real
+    Definir opcion Como Entero
+    Definir monto Como Real
+    Definir continuar Como Caracter
+
+    // Inicialización del saldo
+    saldo <- 1000
+
+    // Bucle principal del cajero automático
+    Repetir
+        // Mostrar menú
+        Limpiar Pantalla // Opcional: para limpiar la consola antes de mostrar el menú
+        Escribir "--- CAJERO AUTOMÁTICO ---"
+        Escribir "1. Consultar saldo"
+        Escribir "2. Retirar dinero"
+        Escribir "3. Depositar dinero"
+        Escribir "4. Salir"
+        Escribir "--------------------------"
+        Escribir "Ingrese su opción (1-4): "
+        Leer opcion
+
+        // Validar opción ingresada
+        Si (opcion >= 1 Y opcion <= 4) Entonces
+            Segun opcion Hacer
+                1: // Consultar saldo
+                    Escribir "Su saldo actual es: $", saldo
+                2: // Retirar dinero
+                    Escribir "Ingrese el monto a retirar: "
+                    Leer monto
+                    Si (monto > 0 Y monto <= saldo) Entonces
+                        saldo <- saldo - monto
+                        Escribir "Retiro exitoso. Su nuevo saldo es: $", saldo
+                    Sino
+                        Si (monto <= 0) Entonces
+                            Escribir "El monto a retirar debe ser mayor que cero."
+                        Sino
+                            Escribir "Saldo insuficiente. No puede retirar $", monto, ". Su saldo actual es: $", saldo
+                        FinSi
+                    FinSi
+                3: // Depositar dinero
+                    Escribir "Ingrese el monto a depositar: "
+                    Leer monto
+                    Si (monto > 0) Entonces
+                        saldo <- saldo + monto
+                        Escribir "Depósito exitoso. Su nuevo saldo es: $", saldo
+                    Sino
+                        Escribir "El monto a depositar debe ser mayor que cero."
+                    FinSi
+                4: // Salir
+                    Escribir "Gracias por usar nuestro cajero. ¡Hasta pronto!"
+            FinSegun
+        Sino
+            Escribir "Opción inválida. Por favor, ingrese un número del 1 al 4."
+        FinSi
+
+        // Preguntar si desea realizar otra acción, excepto si la opción fue salir
+        Si (opcion <> 4) Entonces
+            Escribir "" // Salto de línea
+            Escribir "¿Desea realizar otra operación? (S/N): "
+            Leer continuar
+            // Convertir a mayúscula para validar sin importar la entrada del usuario
+            continuar <- Mayusculas(continuar)
+        Sino
+            // Si la opción es 4 (Salir), forzamos la salida del bucle
+            continuar <- 'N'
+        FinSi
+
+    Hasta Que (continuar = 'N')
+
+FinAlgoritmo

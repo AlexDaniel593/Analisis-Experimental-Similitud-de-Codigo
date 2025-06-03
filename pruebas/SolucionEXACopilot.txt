@@ -1,0 +1,50 @@
+Proceso CajeroAutomatico
+    Definir saldo Como Real
+    saldo = 1000
+    Definir opcion Como Entero
+    Definir continuar Como Caracter
+    
+    Repetir
+        Escribir "Menú Principal:"
+        Escribir "1. Consultar saldo"
+        Escribir "2. Retirar dinero"
+        Escribir "3. Depositar dinero"
+        Escribir "4. Salir"
+        Escribir "Seleccione una opción (1-4):"
+        Leer opcion
+        
+        Si opcion == 1 Entonces
+            Escribir "Su saldo actual es: $", saldo
+        Sino Si opcion == 2 Entonces
+            Definir retiro Como Real
+            Escribir "Ingrese la cantidad a retirar: "
+            Leer retiro
+            Si retiro > 0 Y retiro <= saldo Entonces
+                saldo = saldo - retiro
+                Escribir "Retiro exitoso. Su nuevo saldo es: $", saldo
+            Sino
+                Escribir "Fondos insuficientes o cantidad inválida."
+            FinSi
+        Sino Si opcion == 3 Entonces
+            Definir deposito Como Real
+            Escribir "Ingrese la cantidad a depositar: "
+            Leer deposito
+            Si deposito > 0 Entonces
+                saldo = saldo + deposito
+                Escribir "Depósito exitoso. Su nuevo saldo es: $", saldo
+            Sino
+                Escribir "Cantidad inválida."
+            FinSi
+        Sino Si opcion == 4 Entonces
+            Escribir "Gracias por usar el cajero automático."
+            Salir
+        Sino
+            Escribir "Opción inválida, por favor ingrese un número entre 1 y 4."
+        FinSi
+        
+        Escribir "¿Desea realizar otra acción? (S/N):"
+        Leer continuar
+    Hasta Que continuar == "N" O continuar == "n"
+    
+    Escribir "Sesión finalizada. Gracias por usar el cajero automático."
+FinProceso

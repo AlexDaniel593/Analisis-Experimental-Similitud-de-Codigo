@@ -1,0 +1,18 @@
+Algoritmo digitoS
+	Definir num, sumar, digito, a,b,c,d Como Entero
+	Escribir "Ingrese un número entero no mayor a 5 cifras"
+	Leer num
+	Si num>99999 y num<0 Entonces
+		Escribir "El número que ingreso no es valido para la operación"
+	SiNo
+		digito<-num%10 //Encontramos el código para calcular cada dígito
+		a<-trunc(num/10)%10//Truncamos la división del num y el MOD para encontrar el segundo dígito
+		b<-trunc(num/100)%10// Así continuamente dividimos num para encontrar el tercer dígito
+		c<-trunc(num/1000)%10
+		d<-trunc(num/10000)%10
+		sumar<-digito+a+b+c+d
+	FinSi
+	Escribir "Los dígitos son: " , d, c, b, a, digito
+	Escribir "La suma de sus dígitos es: ",sumar
+	
+FinAlgoritmo

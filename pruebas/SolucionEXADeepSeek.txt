@@ -1,0 +1,74 @@
+Algoritmo CajeroAutomatico
+    Definir saldo Como Real
+    Definir opcion Como Entero
+    Definir continuar Como Caracter
+    Definir monto Como Real
+    
+    saldo <- 1000 // Saldo inicial
+    
+    Repetir
+        Escribir "-----------------------------"
+        Escribir "  CAJERO AUTOMÁTICO"
+        Escribir "-----------------------------"
+        Escribir "1. Consultar saldo"
+        Escribir "2. Retirar dinero"
+        Escribir "3. Depositar dinero"
+        Escribir "4. Salir"
+        Escribir "-----------------------------"
+        
+        // Validar opción ingresada (1-4)
+        Repetir
+            Escribir "Seleccione una opción (1-4):"
+            Leer opcion
+        Hasta Que opcion >= 1 Y opcion <= 4
+        
+        Segun opcion Hacer
+            1: // Consultar saldo
+                Escribir "Su saldo actual es: $", saldo
+                
+            2: // Retirar dinero
+                Repetir
+                    Escribir "Ingrese el monto a retirar:"
+                    Leer monto
+                    
+                    Si monto <= 0 Entonces
+                        Escribir "El monto debe ser mayor que cero."
+                    Sino
+                        Si monto > saldo Entonces
+                            Escribir "Fondos insuficientes. Su saldo es: $", saldo
+                        Sino
+                            saldo <- saldo - monto
+                            Escribir "Retiro exitoso. Su nuevo saldo es: $", saldo
+                        FinSi
+                    FinSi
+                Hasta Que monto > 0 Y monto <= saldo
+                
+            3: // Depositar dinero
+                Repetir
+                    Escribir "Ingrese el monto a depositar:"
+                    Leer monto
+                    
+                    Si monto <= 0 Entonces
+                        Escribir "El monto debe ser mayor que cero."
+                    Sino
+                        saldo <- saldo + monto
+                        Escribir "Depósito exitoso. Su nuevo saldo es: $", saldo
+                    FinSi
+                Hasta Que monto > 0
+                
+            4: // Salir
+                Escribir "Gracias por usar nuestro cajero automático."
+        FinSegun
+        
+        // Preguntar si desea continuar (excepto cuando eligió Salir)
+        Si opcion <> 4 Entonces
+            Repetir
+                Escribir "¿Desea realizar otra operación? (S/N):"
+                Leer continuar
+                continuar <- Mayusculas(continuar)
+            Hasta Que continuar = "S" O continuar = "N"
+        Sino
+            continuar <- "N"
+        FinSi
+    Hasta Que continuar = "N"
+FinAlgoritmo

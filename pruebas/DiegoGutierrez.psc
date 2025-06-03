@@ -1,0 +1,46 @@
+Algoritmo cajero_automatico
+	// Nombre: Diego Gutierrez
+	// NRC: 21592
+	Definir n Como entero
+	Definir saldo, retiro, dep Como Real
+	Definir r Como Caracter
+	
+	saldo<-1000
+	Repetir 
+		Escribir "		                             Menu de opciones"
+		Escribir "1. Consular saldo"
+		Escribir "2. Retirar dinero"
+		Escribir "3. Depositar dinero"
+		Escribir "4. Salir"
+		Leer n
+		Segun n Hacer
+			1:
+				Escribir "Consulta de saldo"
+				Escribir "Su saldo es de: $" saldo
+			2:
+				Escribir "Retirar dinero"
+				Escribir "Ingresar el valor a retirar"
+				Leer retiro
+				si retiro > saldo Entonces
+					Escribir "Saldo insuficiente"
+				SiNo
+					saldo<-saldo-retiro
+					Escribir "Su saldo actual es de : $" saldo
+				FinSi
+			3:
+				Escribir "Depositar dinero"
+				Escribir "Ingresar valor a depositar"
+				Leer dep
+				saldo<- saldo + dep
+				Escribir "Su saldo actual es de: $" saldo
+			4:
+				Escribir "Saliendo"
+			De Otro Modo:
+				Escribir "Error"
+		Fin Segun
+		Escribir "¿Desea realizar otra acción? (si/no)"
+		leer r
+	Hasta Que r="no"
+	Escribir "Cerrando sesión"
+	
+FinAlgoritmo

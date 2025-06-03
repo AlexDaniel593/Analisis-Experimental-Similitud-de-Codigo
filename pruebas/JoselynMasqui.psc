@@ -1,0 +1,58 @@
+Proceso JoselynMasqui_PruebaNro1
+	Definir saldo, retiro, deposito, n1, opcion, n2 Como Real;
+	Escribir "Ingrese la opcion que desee realizar";
+	Escribir "1. Consultar saldo";
+	Escribir "2. Retiro";
+	Escribir "3. Depósito";
+	Escribir "4. Salir";
+	Leer opcion; 
+    Repetir 
+	Segun opcion Hacer
+		1: 
+			Escribir "Su saldo es de $1000";
+			Escribir "";
+			Escribir "Si desea realizar otra opción";
+			Escribir "Ingrese la opcion que desee realizar";
+			Escribir "1. Consultar saldo";
+			Escribir "2. Retiro";
+			Escribir "3. Depósito";
+			Escribir "4. Salir";
+            Leer opcion;
+		2:
+			Escribir "¿Qué cantidad desea retirar?";
+			Leer retiro;
+			Si retiro <= 1000 y retiro > 0 entonces 
+				n1 <- 1000 - retiro;
+				Escribir "Retiro realizado,", " su saldo actual ahora es de ", n1;
+				Escribir "";
+			Sino 
+				Escribir "Saldo insuficiente";
+			FinSi
+			Escribir "Si desea realizar otra opción";
+			Escribir "Ingrese la opcion que desee realizar";
+			Escribir "1. Consultar saldo";
+			Escribir "2. Retiro";
+			Escribir "3. Depósito";
+			Escribir "4. Salir";
+			Leer opcion;
+		3:
+			Escribir "¿Qué cantidad desea depositar?";
+			Leer deposito;
+			n2 <- deposito + 1000;
+			Escribir "Su nuevo saldo es ", n2;
+			Escribir "";
+			Escribir "Si desea realizar otra opción";
+			Escribir "Ingrese la opcion que desee realizar";
+			Escribir "1. Consultar saldo";
+			Escribir "2. Retiro";
+			Escribir "3. Depósito";
+			Escribir "4. Salir";
+			Leer opcion;
+		4:
+			Escribir "Gracias";
+	De Otro Modo:
+	Escribir "Opción inválida";
+	FinSegun
+Hasta Que opcion = 4
+FinProceso
+	

@@ -1,0 +1,47 @@
+Algoritmo CajeroAutomatico
+    Definir saldo, monto Como Real
+    Definir opcion Como Entero
+    Definir continuar Como Caracter
+    
+    saldo <- 1000 // Saldo inicial
+    
+    Repetir
+        Escribir "----- CAJERO AUTOMÁTICO -----"
+        Escribir "1. Consultar saldo"
+        Escribir "2. Retirar dinero"
+        Escribir "3. Depositar dinero"
+        Escribir "4. Salir"
+        Escribir "Seleccione una opción (1-4): "
+        Leer opcion
+        
+        Segun opcion Hacer
+            1:
+                Escribir "Su saldo actual es: $", saldo
+            2:
+                Escribir "Ingrese el monto a retirar: "
+                Leer monto
+                Si monto <= saldo Entonces
+                    saldo <- saldo - monto
+                    Escribir "Retiro exitoso. Saldo restante: $", saldo
+                Sino
+                    Escribir "Fondos insuficientes."
+                FinSi
+            3:
+                Escribir "Ingrese el monto a depositar: "
+                Leer monto
+                saldo <- saldo + monto
+                Escribir "Depósito exitoso. Saldo actual: $", saldo
+            4:
+                Escribir "Gracias por usar el cajero. ¡Hasta luego!"
+            De Otro Modo:
+                Escribir "Opción inválida. Intente nuevamente."
+        FinSegun
+        
+        Si opcion <> 4 Entonces
+            Escribir "¿Desea realizar otra operación? (S/N): "
+            Leer continuar
+        FinSi
+    Hasta Que opcion = 4 O continuar = 'N'
+FinAlgoritmo
+
+

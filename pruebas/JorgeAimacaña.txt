@@ -1,0 +1,110 @@
+Algoritmo AIMACAÑAJORGE_EXAMENPRÁCTIVO_EJ2
+	Definir saldoInicial, retiro, deposito, montofinal Como Real
+	Definir op, i Como Entero
+	Definir nombreUsuario, s, N Como Caracter
+	
+	
+	saldoInicial<-1000
+	retiro <- 0
+	deposito <-0
+	montofinal<-0
+	op<-0
+	
+	Escribir "¡Bienvenido/a, te saluda la asistente virtual del banco *********************, ingresa tu nombre para personalizar tu experiencia!"
+	Leer nombreUsuario
+	
+	Escribir nombreUsuario, " selecciona una de las siguientes opciones"
+	Escribir "1. Consuta de saldo"
+	Escribir "2. Retiro de dinero"
+	Escribir "3. Depositar dinero"
+	Escribir "4. Salir"
+	Leer op
+	Para i=1 Hasta 1000000000000 Hacer
+		Si op=6 Entonces
+			Escribir nombreUsuario, " selecciona una de las siguientes opciones"
+			Escribir "1. Consuta de saldo"
+			Escribir "2. Retiro de dinero"
+			Escribir "3. Depositar dinero"
+			Escribir "4. Salir"
+			Leer op
+		FinSi
+	Segun op
+		1: Escribir nombreUsuario, ". ¡Bienvenido/a a tu consulta de dinero!, tu saldo actual es de:"
+		Escribir "$", saldoInicial
+		2: Escribir "Desea retirar dinero"
+			Escribir "Ingrese la cantidad que desee retirar:"
+			Leer retiro
+			Repetir
+				Si retiro > saldoInicial Entonces
+				Escribir "El monto a sacar no es posible. ¡SALDO INSUFICIENTE!"
+				Escribir "Ingresa un monto valido entre $0.01 y $1000"
+				Leer retiro
+				SINO Si retiro < 0 Entonces
+					Escribir "El monto que solicita no es posible, es un número negativo"
+					Escribir "Ingresa un monto valido entre $0.01 y $1000"
+					Leer retiro
+					Fin Si
+				FinSi
+			Hasta Que rerito < saldoInicial y retiro >0
+			montofinal<-saldoInicial-retiro
+			Esperar 5 Segundos
+			Escribir "Tu retiro ha sido realizado exitosamente, retire su dinero"
+			Esperar 5 Segundos
+			Escribir "Tu saldo actual es de:"
+			Escribir "$", montofinal
+			
+			Escribir "Esto ha sido todo por hoy, pon 4 para salir y 6 para seguirr"
+			Escribir ""
+			Leer op
+			Segun op
+				4: Escribir "¡Ha sido un gusto trabajar contigo el día de hoy"
+				6: Escribir "¿Qué deseas seguir realizando?"
+			FinSegun
+			
+		3: Escribir "Depositar dinero"
+			Escribir "Ingrese la cantidad que desee depositar:"
+			Leer deposito
+			Si deposito < 0 Entonces
+				Repetir
+					Escribir "El monto que solicita no es posible, es un número negativo"
+					Leer deposito
+				Hasta Que deposito > 0
+				
+			FinSi
+			montofinal<-saldoInicial+deposito
+			Esperar 5 Segundos
+			Escribir "Tu deposito ha sido realizado exitosamente"
+			Esperar 5 Segundos
+			Escribir "Tu saldo actual es de:"
+			Escribir "$", montofinal
+			
+			Escribir "Esto ha sido todo por hoy, pon 4 para salir y 6 para seguirr"
+			Escribir ""
+			Leer op
+			Segun op
+				4: Escribir "¡Ha sido un gusto trabajar contigo el día de hoy"
+				6: Escribir "¿Qué deseas seguir realizando?"
+			FinSegun
+			
+
+		4: Escribir "Estás seguro que deseas salir" 
+			Escribir "5. Sí"
+			Escribir "6. No"
+			Leer op
+			Segun op
+				5: Escribir "¡Ha sido un gusto trabajar contigo el día de hoy!"
+				6: Escribir "¿Qué deseas seguir realizando?"
+			FinSegun
+		5: Escribir "¡Ha sido un gusto trabajar contigo el día de hoy!"
+		6: Escribir "¿Qué deseas seguir realizando?"
+		De Otro Modo:
+			Repetir
+				Escribir "Seleccione una opción válida"
+				Leer op
+			Hasta Que op=1 o op=2 o op=3 o op=4 o op=5 o op=6
+			
+	FinSegun 
+	
+	FinPara
+	
+FinAlgoritmo

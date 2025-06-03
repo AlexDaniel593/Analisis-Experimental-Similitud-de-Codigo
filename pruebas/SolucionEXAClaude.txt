@@ -1,0 +1,135 @@
+Algoritmo CajeroAutomatico
+    // Declaración de variables
+    Definir saldo Como Real
+    Definir opcion Como Entero
+    Definir retiro, deposito Como Real
+    Definir continuar Como Caracter
+    Definir salir Como Logico
+    
+    // Inicialización
+    saldo <- 1000
+    salir <- Falso
+    
+    // Mensaje de bienvenida
+    Escribir "=================================="
+    Escribir "  BIENVENIDO AL CAJERO AUTOMÁTICO"
+    Escribir "=================================="
+    Escribir ""
+    
+    // Bucle principal del programa
+    Repetir
+        // Mostrar menú principal
+        Escribir "========== MENÚ PRINCIPAL =========="
+        Escribir "1. Consultar saldo"
+        Escribir "2. Retirar dinero"
+        Escribir "3. Depositar dinero"
+        Escribir "4. Salir"
+        Escribir "===================================="
+        Escribir ""
+        
+        // Validación de opción del menú
+        Repetir
+            Escribir Sin Saltar "Seleccione una opción (1-4): "
+            Leer opcion
+            
+            Si opcion < 1 O opcion > 4 Entonces
+                Escribir "ERROR: Opción inválida. Debe ingresar un número entre 1 y 4."
+                Escribir ""
+            FinSi
+        Hasta Que opcion >= 1 Y opcion <= 4
+        
+        Escribir ""
+        
+        // Procesar la opción seleccionada
+        Segun opcion Hacer
+            Caso 1:
+                // Consultar saldo
+                Escribir "===== CONSULTA DE SALDO ====="
+                Escribir "Su saldo actual es: $", saldo
+                Escribir "============================="
+                
+            Caso 2:
+                // Retirar dinero
+                Escribir "======== RETIRO DE DINERO ========"
+                Escribir "Saldo disponible: $", saldo
+                
+                Repetir
+                    Escribir Sin Saltar "Ingrese la cantidad a retirar: $"
+                    Leer retiro
+                    
+                    Si retiro <= 0 Entonces
+                        Escribir "ERROR: La cantidad debe ser mayor a $0."
+                    SiNo
+                        Si retiro > saldo Entonces
+                            Escribir "ERROR: Fondos insuficientes."
+                            Escribir "Su saldo actual es: $", saldo
+                        SiNo
+                            saldo <- saldo - retiro
+                            Escribir "RETIRO EXITOSO!"
+                            Escribir "Cantidad retirada: $", retiro
+                            Escribir "Nuevo saldo: $", saldo
+                        FinSi
+                    FinSi
+                Hasta Que retiro > 0 Y retiro <= saldo
+                
+                Escribir "================================="
+                
+            Caso 3:
+                // Depositar dinero
+                Escribir "======= DEPÓSITO DE DINERO ======="
+                Escribir "Saldo actual: $", saldo
+                
+                Repetir
+                    Escribir Sin Saltar "Ingrese la cantidad a depositar: $"
+                    Leer deposito
+                    
+                    Si deposito <= 0 Entonces
+                        Escribir "ERROR: La cantidad debe ser mayor a $0."
+                    SiNo
+                        saldo <- saldo + deposito
+                        Escribir "DEPÓSITO EXITOSO!"
+                        Escribir "Cantidad depositada: $", deposito
+                        Escribir "Nuevo saldo: $", saldo
+                    FinSi
+                Hasta Que deposito > 0
+                
+                Escribir "================================="
+                
+            Caso 4:
+                // Salir
+                salir <- Verdadero
+                Escribir "========== HASTA LUEGO =========="
+                Escribir "Gracias por usar nuestro cajero automático."
+                Escribir "¡Que tenga un excelente día!"
+                Escribir "================================="
+                
+        FinSegun
+        
+        // Preguntar si desea continuar (solo si no eligió salir)
+        Si salir = Falso Entonces
+            Escribir ""
+            Repetir
+                Escribir Sin Saltar "¿Desea realizar otra operación? (S/N): "
+                Leer continuar
+                continuar <- Mayuscula(continuar)
+                
+                Si continuar <> "S" Y continuar <> "N" Entonces
+                    Escribir "ERROR: Debe ingresar 'S' para Sí o 'N' para No."
+                FinSi
+            Hasta Que continuar = "S" O continuar = "N"
+            
+            Si continuar = "N" Entonces
+                salir <- Verdadero
+                Escribir ""
+                Escribir "========== HASTA LUEGO =========="
+                Escribir "Gracias por usar nuestro cajero automático."
+                Escribir "¡Que tenga un excelente día!"
+                Escribir "================================="
+            FinSi
+            
+            Escribir ""
+        FinSi
+        
+    Hasta Que salir = Verdadero
+    
+FinAlgoritmo
